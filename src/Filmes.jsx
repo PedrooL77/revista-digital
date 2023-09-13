@@ -4,9 +4,9 @@ import React, { useState } from 'react'
 function Filmes() {
 
     const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
+    const [sinopse, setSinopse] = useState("");
     const [ano, setAno] = useState("");
-    const [duracao, setDuracao] = useState("");
+    const [paginas, setPaginas] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
     const [cadastro, setCadastro] = useState(false);
@@ -15,7 +15,7 @@ function Filmes() {
 
     function Cadastrar(evento) {
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos", {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -23,9 +23,9 @@ function Filmes() {
             body: JSON.stringify(
                 {
                     titulo: titulo,
-                    descricao: descricao,
+                    sinopse: sinopse,
                     ano: ano,
-                    duracao: duracao,
+                    paginas: paginas,
                     imagem: imagem,
                     categoria: categoria
                 }
@@ -58,8 +58,8 @@ function Filmes() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
-                { erro && (<Alert severity="warning">Filme já cadastrado. Tente novamente por favor!</Alert>) }
-                { cadastro && ( <Alert severity="success">Obrigado por cadastrar seu filme!</Alert> )}
+                { erro && (<Alert severity="warning">Livro já cadastrado. Tente novamente por favor!</Alert>) }
+                { cadastro && ( <Alert severity="success">Obrigado por cadastrar seu livro!</Alert> )}
                 <Box component="form" onSubmit={Cadastrar}>
                     <TextField
                         type="text"
@@ -69,17 +69,15 @@ function Filmes() {
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
                         fullWidth
-                        required
                     />
                     <TextField
                         type="text"
-                        label="Descrição"
+                        label="Sinopse"
                         variant="filled"
                         margin="normal"
-                        value={descricao}
-                        onChange={(e) => setDescricao(e.target.value)}
+                        value={sinopse}
+                        onChange={(e) => setSinopse(e.target.value)}
                         fullWidth
-                        required
                     />
                     <TextField
                         type="number"
@@ -89,17 +87,15 @@ function Filmes() {
                         value={ano}
                         onChange={(e) => setAno(e.target.value)}
                         fullWidth
-                        required
                     />
                     <TextField
                         type="text"
-                        label="Duração"
+                        label="Páginas"
                         variant="filled"
                         margin="normal"
-                        value={duracao}
-                        onChange={(e) => setDuracao(e.target.value)}
+                        value={paginas}
+                        onChange={(e) => setPaginas(e.target.value)}
                         fullWidth
-                        required
                     />
                     <TextField
                         type="text"
@@ -109,7 +105,6 @@ function Filmes() {
                         value={categoria}
                         onChange={(e) => setCategoria(e.target.value)}
                         fullWidth
-                        required
                     />
                     <TextField
                         type="text"
@@ -119,7 +114,6 @@ function Filmes() {
                         value={imagem}
                         onChange={(e) => setImagem(e.target.value)}
                         fullWidth
-                        required
                     />
                     <Button type="submit" variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} >Cadastrar</Button>
                 </Box>

@@ -41,7 +41,7 @@ function App() {
 
     return (
         <>
-            <h1>Filmes</h1>
+            <h1>Livros</h1>
             <Container sx={{ 
                 display: "flex" ,
                 flexFlow: "row",
@@ -53,10 +53,10 @@ function App() {
                     <Filme
                         imagem={filme.imagem}
                         titulo={filme.titulo}
-                        descricao={filme.descricao}
+                        sinopse={filme.sinopse}
                         categoria={filme.categoria}
                         ano={filme.ano}
-                        duracao={filme.duracao}
+                        paginas={filme.paginas}
                         excluir={ (e) => Excluir( e, filme._id ) }
                         id={filme._id}
                     />

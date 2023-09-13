@@ -6,9 +6,9 @@ function EditaFilme() {
 
     const { id } = useParams();
     const [titulo, setTitulo] = useState("");
-    const [descricao, setDescricao] = useState("");
+    const [sinopse, setSinopse] = useState("");
     const [ano, setAno] = useState("");
-    const [duracao, setDuracao] = useState("");
+    const [paginas, setPaginas] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
     const [editar, setEditar] = useState(false);
@@ -25,9 +25,9 @@ function EditaFilme() {
         .then((json) => {
             if( !json.status ) {
                 setTitulo( json.titulo );
-                setDescricao( json.descricao );
+                setSinopse( json.sinopse );
                 setAno( json.ano );
-                setDuracao( json.duracao);
+                setPaginas( json.paginas);
                 setImagem( json.imagem );
                 setCategoria( json.categoria );
             } else {
@@ -49,9 +49,9 @@ function EditaFilme() {
                 {
                     id: id,
                     titulo: titulo,
-                    descricao: descricao,
+                    sinopse: sinopse,
                     ano: ano,
-                    duracao: duracao,
+                    paginas: paginas,
                     imagem: imagem,
                     categoria: categoria
                 }
@@ -103,8 +103,8 @@ function EditaFilme() {
                         label="Descrição"
                         variant="filled"
                         margin="normal"
-                        value={descricao}
-                        onChange={(e) => setDescricao(e.target.value)}
+                        value={sinopse}
+                        onChange={(e) => setSinopse(e.target.value)}
                         fullWidth
                         required
                     />
@@ -123,8 +123,8 @@ function EditaFilme() {
                         label="Duração"
                         variant="filled"
                         margin="normal"
-                        value={duracao}
-                        onChange={(e) => setDuracao(e.target.value)}
+                        value={paginas}
+                        onChange={(e) => setPaginas(e.target.value)}
                         fullWidth
                         required
                     />

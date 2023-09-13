@@ -65,7 +65,7 @@ function Cadastro() {
             flexDirection: "column",
             alignItems: "center"
         }}>
-            <Typography component="h1" variant='h4'>Cadastrar</Typography>
+            <Typography component="h1" variant='h4'>Cadastrar-se</Typography>
             { erro && ( <Alert severity="warning" sx={{ mt: 2, mb: 2 }} >Desculpe tente novamente</Alert> ) }
             { cadastro && ( <Alert severity="success" sx={{ mt: 2, mb: 2 }}>Obrigado por se cadastrar</Alert>)}
             <Box component="form" onSubmit={Cadastrar}>
@@ -77,7 +77,6 @@ function Cadastro() {
                   value={nome}
                   onChange={ (e) => setNome( e.target.value ) }
                   fullWidth
-                  required
                 />
                 <TextField 
                   type="email"
@@ -87,7 +86,6 @@ function Cadastro() {
                   value={email}
                   onChange={ (e) => setEmail( e.target.value ) }
                   fullWidth
-                  required
                 />
                 <TextField 
                   type="text"
@@ -97,7 +95,6 @@ function Cadastro() {
                   value={cpf}
                   onChange={ (e) => setCpf( e.target.value ) }
                   fullWidth
-                  required
                 />
                 <TextField 
                   type="text"
@@ -107,7 +104,6 @@ function Cadastro() {
                   value={telefone}
                   onChange={ (e) => setTelefone( e.target.value ) }
                   fullWidth
-                  required
                 />
                 <TextField 
                   type="password"
@@ -117,7 +113,6 @@ function Cadastro() {
                   value={senha}
                   onChange={ (e) => setSenha( e.target.value ) }
                   fullWidth
-                  required
                 />
                 <Button type="submit" variant="contained" size="large" fullWidth sx={{ mt:2, mb: 2}}>Cadastrar</Button>
             </Box>

@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Box, Button, Checkbox, Container, FormControlLabel, Grid, Link, TextField, Typography } from '@mui/material';
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, json } from 'react-router-dom';
@@ -56,6 +56,8 @@ function Login() {
   }
 
   return (
+    <>
+    <header className='header1'></header>
     <Container component="section" maxWidth="xs" >
         <Box 
         sx={{ 
@@ -99,12 +101,13 @@ function Login() {
                         Esqueci a senha
                     </Grid>
                     <Grid item>
-                        Cadastrar
+                        <Link href={ "cadastro/"}>Cadastrar</Link>
                     </Grid>
                 </Grid>
             </Box>
         </Box>
     </Container>
+    </>
   )
 }
 
