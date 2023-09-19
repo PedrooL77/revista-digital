@@ -1,6 +1,7 @@
-import { Box, Container, TextField, Button, Alert } from "@mui/material";
+import { Box, Container, TextField, Button, Alert, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ResponsiveMenu from "./components/ResponsiveMenu";
 
 function EditaFilme() {
 
@@ -75,9 +76,11 @@ function EditaFilme() {
 
 
     return (
+        <>
+        <ResponsiveMenu></ResponsiveMenu>
         <Container component="section" maxWidth="sm">
             <Box sx={{
-                mt: 10,
+                mt: 7,
                 backgroundColor: "#EDEDED",
                 padding: "30px",
                 borderRadius: "10px",
@@ -85,9 +88,10 @@ function EditaFilme() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
+                <Typography component="h2" variant='h4'>Editar Filme</Typography>
                 { erro && ( <Alert severity="warning">{erro}</Alert>)}
                 { editar && ( <Alert severity="success">Filme editado com sucesso</Alert>)}
-                <Box component="form" onSubmit={Editar}>
+                <Box component="form" onSubmit={Editar} sx={{ mt: 2}}>
                     <TextField
                         type="text"
                         label="Título"
@@ -96,7 +100,7 @@ function EditaFilme() {
                         value={titulo}
                         onChange={(e) => setTitulo(e.target.value)}
                         fullWidth
-                        required
+                
                     />
                     <TextField
                         type="text"
@@ -106,7 +110,7 @@ function EditaFilme() {
                         value={sinopse}
                         onChange={(e) => setSinopse(e.target.value)}
                         fullWidth
-                        required
+                     
                     />
                     <TextField
                         type="number"
@@ -116,7 +120,7 @@ function EditaFilme() {
                         value={ano}
                         onChange={(e) => setAno(e.target.value)}
                         fullWidth
-                        required
+                     
                     />
                     <TextField
                         type="text"
@@ -126,7 +130,7 @@ function EditaFilme() {
                         value={paginas}
                         onChange={(e) => setPaginas(e.target.value)}
                         fullWidth
-                        required
+                       
                     />
                     <TextField
                         type="text"
@@ -136,7 +140,7 @@ function EditaFilme() {
                         value={categoria}
                         onChange={(e) => setCategoria(e.target.value)}
                         fullWidth
-                        required
+                   
                     />
                     <TextField
                         type="text"
@@ -146,13 +150,14 @@ function EditaFilme() {
                         value={imagem}
                         onChange={(e) => setImagem(e.target.value)}
                         fullWidth
-                        required
+                     
                     />
                     <Button type="submit" variant="contained" fullWidth sx={{ mt: 2, mb: 2 }} >Editar</Button>
                 </Box>
 
             </Box>
         </Container>
+        </>
     )
 }
 

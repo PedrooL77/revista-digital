@@ -38,7 +38,7 @@ function Filme(props) {
                     <button onClick={props.excluir}>x</button>
                 </Grid>
                 <Grid item xs={6}>
-                    <Link href={ "cadastro/" + props.id }>Editar</Link>
+                    <Link href={ "cadastro/"}>Editar</Link>
                 </Grid>
             </Grid>
             

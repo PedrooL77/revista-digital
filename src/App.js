@@ -1,6 +1,8 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
 import Filme from "./components/Filme";
+import ResponsiveMenu from "./components/ResponsiveMenu";
+import "./global.css";
 
 
 
@@ -41,7 +43,8 @@ function App() {
 
     return (
         <>
-            <h1>Livros</h1>
+            <ResponsiveMenu />
+            <h1>Livros Adicionados</h1>
             <Container sx={{ 
                 display: "flex" ,
                 flexFlow: "row",

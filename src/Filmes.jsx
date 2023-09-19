@@ -1,5 +1,6 @@
-import { Alert, Box, Button, Container, Link, TextField } from '@mui/material';
+import { Alert, Box, Button, Container, Link, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react'
+import ResponsiveMenu from './components/ResponsiveMenu';
 
 function Filmes() {
 
@@ -48,9 +49,11 @@ function Filmes() {
 
 
     return (
+        <>
+        <ResponsiveMenu/>
         <Container component="section" maxWidth="sm">
             <Box sx={{
-                mt: 10,
+                mt: 7,
                 backgroundColor: "#EDEDED",
                 padding: "30px",
                 borderRadius: "10px",
@@ -58,6 +61,7 @@ function Filmes() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
+                <Typography component="h2" variant='h4' sx={{mb: 2}}>Cadastre seu Filme</Typography>
                 { erro && (<Alert severity="warning">Livro já cadastrado. Tente novamente por favor!</Alert>) }
                 { cadastro && ( <Alert severity="success">Obrigado por cadastrar seu livro!</Alert> )}
                 <Box component="form" onSubmit={Cadastrar}>
@@ -119,6 +123,7 @@ function Filmes() {
                 </Box>
             </Box>
         </Container>
+        </>
     )
 }
 

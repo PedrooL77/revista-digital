@@ -57,7 +57,7 @@ function Login() {
 
   return (
     <>
-    <header className='header1'></header>
+    
     <Container component="section" maxWidth="xs" >
         <Box 
         sx={{ 
