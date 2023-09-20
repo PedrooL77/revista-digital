@@ -1,5 +1,6 @@
 import { Alert, Box, Button, Container, TextField, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
+import ResponsiveMenu from './components/ResponsiveMenu';
 
 function Cadastro() {
 
@@ -14,7 +15,7 @@ function Cadastro() {
   function Cadastrar( evento ) {
 
     evento.preventDefault();
-    fetch( process.env.REACT_APP_BACKEND + "users", {
+    fetch( process.env.REACT_APP_BACKEND + "usuarios", {
         method: "POST",
         headers: {
             'Content-Type': 'application/json'
@@ -55,6 +56,8 @@ function Cadastro() {
   }, [ cadastro ] );
 
   return (
+    <>
+    <ResponsiveMenu/>
     <Container component="section" maxWidth="sm">
         <Box sx={{ 
             mt: 10,
@@ -118,6 +121,7 @@ function Cadastro() {
             </Box>
         </Box>
     </Container>
+    </>
   )
 }
 

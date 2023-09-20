@@ -1,6 +1,7 @@
 import { AppBar, Avatar, Box, Button, Container, Icon, IconButton, Link, Menu, MenuItem, SvgIcon, Toolbar, Tooltip, Typography } from "@mui/material";
 import { useState } from "react";
 import Foto from "./Logo2.png";
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 function ResponsiveMenu(props) {
@@ -53,7 +54,7 @@ function ResponsiveMenu(props) {
                     onClick={handleOpenNavMenu}
                     color="inherit"
                     >
-
+                      <MenuIcon></MenuIcon>
                     </IconButton>
                     <Menu 
                     id="menu-appbar"
@@ -72,9 +73,15 @@ function ResponsiveMenu(props) {
                     sx={{
                       display: { xs: 'block', md: 'none' },
                     }}
-                  >
-                    <MenuItem onClick={handleCloseNavMenu}>
-                      <Typography textAlign="center"></Typography>
+                    > 
+                    <MenuItem  onClick={handleCloseUserMenu}>
+                      <Link href={ "/"} sx={{ color: 'black', textDecoration: 'none'}}>Livros</Link>
+                    </MenuItem>
+                    <MenuItem  onClick={handleCloseUserMenu}>
+                      <Link href={ "/filmes"} sx={{ color: 'black', textDecoration: 'none'}}>Cadastro de Livros</Link>
+                    </MenuItem>
+                    <MenuItem  onClick={handleCloseUserMenu}>
+                      <Link href={ "/edicao/:id"} sx={{ color: 'black', textDecoration: 'none'}}>Editar Informações</Link>
                     </MenuItem>
                     </Menu>
                 </Box>

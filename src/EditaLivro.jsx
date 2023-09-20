@@ -3,20 +3,23 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ResponsiveMenu from "./components/ResponsiveMenu";
 
-function EditaFilme() {
+function EditaLivro() {
 
     const { id } = useParams();
     const [titulo, setTitulo] = useState("");
-    const [sinopse, setSinopse] = useState("");
+    const [descricao, setDescricao] = useState("");
     const [ano, setAno] = useState("");
-    const [paginas, setPaginas] = useState("");
+    const [duracao, setDuracao] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
     const [editar, setEditar] = useState(false);
     const [erro, setErro] = useState(false);
 
     useEffect( () => {
-        fetch( process.env.REACT_APP_BACKEND + "filmes/" + id, {
+
+        const usuario = localStorage.getItem("usuario")
+
+        fetch( process.env.REACT_APP_BACKEND + "produtos/" + usuario + "/" + id, {
             method: "GET",
             headers: {
                 'Content-Type': 'application/json'
@@ -26,9 +29,9 @@ function EditaFilme() {
         .then((json) => {
             if( !json.status ) {
                 setTitulo( json.titulo );
-                setSinopse( json.sinopse );
+                setDescricao( json.descricao);
                 setAno( json.ano );
-                setPaginas( json.paginas);
+                setDuracao( json.duracao);
                 setImagem( json.imagem );
                 setCategoria( json.categoria );
             } else {
@@ -41,7 +44,7 @@ function EditaFilme() {
     function Editar( evento ) {
         evento.preventDefault();
 
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+        fetch( process.env.REACT_APP_BACKEND + "produtos", {
             method: "PUT",
             headers: {
                 'Content-Type': 'application/json'
@@ -50,11 +53,12 @@ function EditaFilme() {
                 {
                     id: id,
                     titulo: titulo,
-                    sinopse: sinopse,
+                    descricao: descricao,
                     ano: ano,
-                    paginas: paginas,
+                    duracao: duracao,
                     imagem: imagem,
-                    categoria: categoria
+                    categoria: categoria,
+                    usuario: localStorage.getItem( "usuario" )
                 }
             )
         })
@@ -107,14 +111,14 @@ function EditaFilme() {
                         label="Descrição"
                         variant="filled"
                         margin="normal"
-                        value={sinopse}
-                        onChange={(e) => setSinopse(e.target.value)}
+                        value={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}
                         fullWidth
                      
                     />
                     <TextField
-                        type="number"
-                        label="Ano"
+                        type="data"
+                        label="data"
                         variant="filled"
                         margin="normal"
                         value={ano}
@@ -127,8 +131,8 @@ function EditaFilme() {
                         label="Duração"
                         variant="filled"
                         margin="normal"
-                        value={paginas}
-                        onChange={(e) => setPaginas(e.target.value)}
+                        value={duracao}
+                        onChange={(e) => setDuracao(e.target.value)}
                         fullWidth
                        
                     />
@@ -161,4 +165,4 @@ function EditaFilme() {
     )
 }
 
-export default EditaFilme;
+export default EditaLivro;

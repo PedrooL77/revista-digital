@@ -2,12 +2,12 @@ import { Alert, Box, Button, Container, Link, TextField, Typography } from '@mui
 import React, { useState } from 'react'
 import ResponsiveMenu from './components/ResponsiveMenu';
 
-function Filmes() {
+function Livros() {
 
     const [titulo, setTitulo] = useState("");
-    const [sinopse, setSinopse] = useState("");
+    const [descricao, setDescricao] = useState("");
     const [ano, setAno] = useState("");
-    const [paginas, setPaginas] = useState("");
+    const [duracao, setDuracao] = useState("");
     const [categoria, setCategoria] = useState("");
     const [imagem, setImagem] = useState("");
     const [cadastro, setCadastro] = useState(false);
@@ -24,11 +24,12 @@ function Filmes() {
             body: JSON.stringify(
                 {
                     titulo: titulo,
-                    sinopse: sinopse,
+                    descricao: descricao,
                     ano: ano,
-                    paginas: paginas,
+                    duracao: duracao,
                     imagem: imagem,
-                    categoria: categoria
+                    categoria: categoria,
+                    usuario: localStorage.getItem( "usuario" )
                 }
             )
         })
@@ -61,8 +62,8 @@ function Filmes() {
                 flexDirection: "column",
                 alignItems: "center"
             }}>
-                <Typography component="h2" variant='h4' sx={{mb: 2}}>Cadastre seu Filme</Typography>
-                { erro && (<Alert severity="warning">Livro já cadastrado. Tente novamente por favor!</Alert>) }
+                <Typography component="h2" variant='h4' sx={{mb: 2}}>Cadastre seu Livro</Typography>
+                { erro && (<Alert severity="warning">Este livro já foi cadastrado. Tente novamente por favor!</Alert>) }
                 { cadastro && ( <Alert severity="success">Obrigado por cadastrar seu livro!</Alert> )}
                 <Box component="form" onSubmit={Cadastrar}>
                     <TextField
@@ -79,13 +80,13 @@ function Filmes() {
                         label="Sinopse"
                         variant="filled"
                         margin="normal"
-                        value={sinopse}
-                        onChange={(e) => setSinopse(e.target.value)}
+                        value={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}
                         fullWidth
                     />
                     <TextField
-                        type="number"
-                        label="Ano"
+                        type="date"
+                        label="Data"
                         variant="filled"
                         margin="normal"
                         value={ano}
@@ -97,8 +98,8 @@ function Filmes() {
                         label="Páginas"
                         variant="filled"
                         margin="normal"
-                        value={paginas}
-                        onChange={(e) => setPaginas(e.target.value)}
+                        value={duracao}
+                        onChange={(e) => setDuracao(e.target.value)}
                         fullWidth
                     />
                     <TextField
@@ -127,4 +128,4 @@ function Filmes() {
     )
 }
 
-export default Filmes;
+export default Livros;

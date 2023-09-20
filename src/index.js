@@ -5,8 +5,8 @@ import App from './App';
 import { createBrowserRouter, RouterProvider} from "react-router-dom";
 import Login from './Login';
 import Cadastro from "./Cadastro";
-import Filmes from './Filmes';
-import EditaFilme from './EditaFilme';
+import Filmes from './Livros';
+import EditaFilme from './EditaLivro';
 
 const theme = createTheme({
   palette: {

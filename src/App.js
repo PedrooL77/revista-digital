@@ -1,6 +1,6 @@
 import { Avatar, Button, Container } from "@mui/material";
 import { useEffect, useState } from "react";
-import Filme from "./components/Filme";
+import Filme from "./components/Livro";
 import ResponsiveMenu from "./components/ResponsiveMenu";
 import "./global.css";
 
@@ -10,9 +10,13 @@ function App() {
 
     const [ filmes, setFilmes ] = useState();
     const [ erro, setErro ] = useState();
+    
 
     useEffect(() => {
-        fetch( process.env.REACT_APP_BACKEND + "filmes", {
+
+        const usuario = localStorage.getItem( "usuario" );
+
+        fetch( process.env.REACT_APP_BACKEND + "produtos/" + usuario, {
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -24,13 +28,14 @@ function App() {
 
     function Excluir( evento, id ) {
         evento.preventDefault();
-        fetch( process.env.REACT_APP_BACKEND + "filmes" , {
+        fetch( process.env.REACT_APP_BACKEND + "produtos" , {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                id: id
+                id: id,
+                usuario: localStorage.getItem( "usuario" )
             })
         } )
         .then( ( resposta ) => resposta.json() )
@@ -49,14 +54,15 @@ function App() {
                 display: "flex" ,
                 flexFlow: "row",
                 flexWrap: "wrap",
-                gap: "2rem"
+                gap: "2rem",
+                mt: "3rem"
             }}>
             { filmes && (
                 filmes.map( (filme, index ) => ( 
                     <Filme
                         imagem={filme.imagem}
                         titulo={filme.titulo}
-                        sinopse={filme.sinopse}
+                        descricao={filme.descricao}
                         categoria={filme.categoria}
                         ano={filme.ano}
                         paginas={filme.paginas}
